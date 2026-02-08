@@ -2,7 +2,7 @@
 
 #include "event_superschema/super_schema.hpp"
 
-using namespace event_superschema;
+using namespace Vlinder::EventSuperschema;
 
 TEST_CASE("Super schema validation", "[super_schema]")
 {

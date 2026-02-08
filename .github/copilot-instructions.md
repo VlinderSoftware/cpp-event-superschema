@@ -2,11 +2,17 @@
 
 - **Standards:** Use C++20 or C++23 standards.
 - **Formatting:** Use 4 spaces for indentation, braces on new lines (Allman style), and `clang-format` if available.
+  - **Exception:** Namespace braces should be on the same line as the namespace declaration.
 - **Naming:**
     - Types/Classes: `PascalCase`
+    - Namespaces: `PascalCase`
     - Functions: `camelCase`
     - Variables: `snake_case`
     - Private members: `suffix_snake_case_`
+- **Namespaces:**
+    - The outer namespace should be `Vlinder`
+    - Inner namespaces follow PascalCase naming
+    - Namespace braces stay on the same line (not Allman style)
 - **Modern C++:**
     - Use `auto` for type deduction when readable.
     - Use `nullptr` instead of `NULL` or `0`.

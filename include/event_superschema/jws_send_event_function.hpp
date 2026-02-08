@@ -2,8 +2,8 @@
 
 #include "types.hpp"
 
-namespace event_superschema
-{
+namespace Vlinder {
+namespace EventSuperschema {
 
 /// Get a function to send JWS signed events
 ///
@@ -19,4 +19,5 @@ SendEventFunction get_jws_send_event_function(const SendFunction& send, const st
                                               const std::string& signing_key,
                                               const DataPreprocessors& data_preprocessors = {});
 
-}  // namespace event_superschema
+}  // namespace EventSuperschema
+}  // namespace Vlinder

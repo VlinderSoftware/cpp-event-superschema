@@ -5,8 +5,8 @@
 
 #include "types.hpp"
 
-namespace event_superschema
-{
+namespace Vlinder {
+namespace EventSuperschema {
 
 /// Get a function to send properly formatted events
 ///
@@ -23,4 +23,5 @@ SendEventFunction get_send_event_function(const SendFunction& send, const std::s
 // Helper function to generate UUID v4
 std::string generate_uuid();
 
-}  // namespace event_superschema
+}  // namespace EventSuperschema
+}  // namespace Vlinder

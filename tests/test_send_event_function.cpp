@@ -3,7 +3,7 @@
 #include "event_superschema/send_event_function.hpp"
 #include "event_superschema/super_schema.hpp"
 
-using namespace event_superschema;
+using namespace Vlinder::EventSuperschema;
 
 TEST_CASE("Send event function", "[send_event]")
 {

@@ -7,8 +7,26 @@
 Language: Cpp
 Standard: c++20
 
-# Allman brace style - braces on new lines
-BreakBeforeBraces: Allman
+# Custom brace style - Allman for most, but namespaces on same line
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: true
+  AfterClass: true
+  AfterControlStatement: Always
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: false  # Namespaces keep braces on same line
+  AfterStruct: true
+  AfterUnion: true
+  AfterExternBlock: true
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeLambdaBody: true
+  BeforeWhile: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
 
 # Indentation
 IndentWidth: 4

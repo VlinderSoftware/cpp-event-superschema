@@ -2,8 +2,8 @@
 
 #include "event_superschema/send_event_function.hpp"
 
-namespace event_superschema
-{
+namespace Vlinder {
+namespace EventSuperschema {
 
 SendEventFunction get_jwe_send_event_function(const SendFunction& send, const std::string& pid,
                                               const std::string& encryption_key,
@@ -24,4 +24,5 @@ SendEventFunction get_jwe_send_event_function(const SendFunction& send, const st
     return base_send;
 }
 
-}  // namespace event_superschema
+}  // namespace EventSuperschema
+}  // namespace Vlinder

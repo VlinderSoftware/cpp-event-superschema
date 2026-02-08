@@ -2,8 +2,8 @@
 
 #include "types.hpp"
 
-namespace event_superschema
-{
+namespace Vlinder {
+namespace EventSuperschema {
 
 /// Get a JWE (JSON Web Encryption) event dispatcher
 ///
@@ -17,4 +17,5 @@ namespace event_superschema
 EventDispatcher get_jwe_event_dispatcher(const ErrorHandler& err, const EventHandlers& handlers,
                                          const std::string& decryption_key);
 
-}  // namespace event_superschema
+}  // namespace EventSuperschema
+}  // namespace Vlinder

@@ -2,8 +2,8 @@
 
 #include <regex>
 
-namespace event_superschema
-{
+namespace Vlinder {
+namespace EventSuperschema {
 
 const json super_schema = {{"type", "object"},
                            {"properties",
@@ -109,4 +109,5 @@ bool validate_super_schema(const json& event)
     return true;
 }
 
-}  // namespace event_superschema
+}  // namespace EventSuperschema
+}  // namespace Vlinder

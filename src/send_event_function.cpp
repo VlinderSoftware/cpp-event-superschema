@@ -4,8 +4,8 @@
 #include <random>
 #include <sstream>
 
-namespace event_superschema
-{
+namespace Vlinder {
+namespace EventSuperschema {
 
 std::string generate_uuid()
 {
@@ -107,4 +107,5 @@ SendEventFunction get_send_event_function(const SendFunction& send, const std::s
     };
 }
 
-}  // namespace event_superschema
+}  // namespace EventSuperschema
+}  // namespace Vlinder
