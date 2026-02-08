@@ -14,8 +14,8 @@ namespace EventSuperschema {
 /// @param handlers Event handlers
 /// @param verification_key Key used to verify JWS signatures (placeholder)
 /// @return A dispatcher that verifies JWS signatures before dispatching
-EventDispatcher get_jws_event_dispatcher(const ErrorHandler& err, const EventHandlers& handlers,
-                                         const std::string& verification_key);
+EventDispatcher getJWSEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers,
+                                      const std::string& verification_key);
 
 }  // namespace EventSuperschema
 }  // namespace Vlinder

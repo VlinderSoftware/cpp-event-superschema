@@ -7,7 +7,7 @@
 namespace Vlinder {
 namespace EventSuperschema {
 
-std::string generate_uuid()
+std::string generateUuid()
 {
     // Simple UUID v4 generator
     static std::random_device rd;
@@ -47,8 +47,8 @@ std::string generate_uuid()
     return ss.str();
 }
 
-SendEventFunction get_send_event_function(const SendFunction& send, const std::string& pid,
-                                          const DataPreprocessors& data_preprocessors)
+SendEventFunction getSendEventFunction(const SendFunction& send, const std::string& pid,
+                                       const DataPreprocessors& data_preprocessors)
 {
     // Create preprocessors with default if needed
     DataPreprocessors preprocessors = data_preprocessors;
@@ -80,7 +80,7 @@ SendEventFunction get_send_event_function(const SendFunction& send, const std::s
         }
 
         // Generate event ID
-        std::string event_id = generate_uuid();
+        std::string event_id = generateUuid();
 
         // Build metadata
         json metadata = {{"cid", cid.empty() ? event_id : cid}, {"tid", event_id}, {"pid", pid}};

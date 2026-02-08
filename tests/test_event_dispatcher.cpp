@@ -27,7 +27,7 @@ TEST_CASE("Event dispatcher", "[dispatcher]")
             (void)err;
         };
 
-        auto dispatcher = get_event_dispatcher(err, handlers);
+        auto dispatcher = getEventDispatcher(err, handlers);
 
         json valid_event = {{"id", "550e8400-e29b-41d4-a716-446655440000"},
                             {"type", "test.event"},
@@ -62,7 +62,7 @@ TEST_CASE("Event dispatcher", "[dispatcher]")
             (void)event;
         };
 
-        auto dispatcher = get_event_dispatcher(err, handlers);
+        auto dispatcher = getEventDispatcher(err, handlers);
 
         json invalid_event = {{"type", "test.event"},
                               {"metadata",
@@ -96,7 +96,7 @@ TEST_CASE("Event dispatcher", "[dispatcher]")
             (void)err;
         };
 
-        auto dispatcher = get_event_dispatcher(err, handlers);
+        auto dispatcher = getEventDispatcher(err, handlers);
 
         json versioned_event = {{"id", "550e8400-e29b-41d4-a716-446655440000"},
                                 {"type", "test.event:v1"},
@@ -129,7 +129,7 @@ TEST_CASE("Event dispatcher", "[dispatcher]")
             (void)err;
         };
 
-        auto dispatcher = get_event_dispatcher(err, handlers);
+        auto dispatcher = getEventDispatcher(err, handlers);
 
         json event = {{"id", "550e8400-e29b-41d4-a716-446655440000"},
                       {"type", "unknown.event"},
@@ -160,7 +160,7 @@ TEST_CASE("Event dispatcher", "[dispatcher]")
             (void)event;
         };
 
-        auto dispatcher = get_event_dispatcher(err, handlers);
+        auto dispatcher = getEventDispatcher(err, handlers);
 
         json event = {{"id", "550e8400-e29b-41d4-a716-446655440000"},
                       {"type", "unknown.event"},

@@ -17,11 +17,11 @@ namespace EventSuperschema {
 ///                           The data preprocessor should convert the event data to a serializable
 ///                           json object conforming to the appropriate schema
 /// @return A function to send events with proper formatting
-SendEventFunction get_send_event_function(const SendFunction& send, const std::string& pid,
-                                          const DataPreprocessors& data_preprocessors = {});
+SendEventFunction getSendEventFunction(const SendFunction& send, const std::string& pid,
+                                       const DataPreprocessors& data_preprocessors = {});
 
 // Helper function to generate UUID v4
-std::string generate_uuid();
+std::string generateUuid();
 
 }  // namespace EventSuperschema
 }  // namespace Vlinder

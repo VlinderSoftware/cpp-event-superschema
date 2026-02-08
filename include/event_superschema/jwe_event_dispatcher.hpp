@@ -14,8 +14,8 @@ namespace EventSuperschema {
 /// @param handlers Event handlers
 /// @param decryption_key Key used to decrypt JWE events (placeholder)
 /// @return A dispatcher that decrypts JWE events before dispatching
-EventDispatcher get_jwe_event_dispatcher(const ErrorHandler& err, const EventHandlers& handlers,
-                                         const std::string& decryption_key);
+EventDispatcher getJWEEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers,
+                                      const std::string& decryption_key);
 
 }  // namespace EventSuperschema
 }  // namespace Vlinder

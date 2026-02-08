@@ -16,7 +16,7 @@ TEST_CASE("Send event function", "[send_event]")
         };
 
         std::string pid = "550e8400-e29b-41d4-a716-446655440010";
-        auto send_event = get_send_event_function(send, pid);
+        auto send_event = getSendEventFunction(send, pid);
 
         send_event("test.event", json{}, "", "", "");
 
@@ -25,7 +25,7 @@ TEST_CASE("Send event function", "[send_event]")
         REQUIRE(sent_event.contains("metadata"));
         REQUIRE(sent_event["type"] == "test.event");
         REQUIRE(sent_event["metadata"]["pid"] == pid);
-        REQUIRE(validate_super_schema(sent_event));
+        REQUIRE(validateSuperSchema(sent_event));
     }
 
     SECTION("Sends event with data")
@@ -37,7 +37,7 @@ TEST_CASE("Send event function", "[send_event]")
         };
 
         std::string pid = "550e8400-e29b-41d4-a716-446655440010";
-        auto send_event = get_send_event_function(send, pid);
+        auto send_event = getSendEventFunction(send, pid);
 
         json event_data = {{"key", "value"}, {"count", 42}};
 
@@ -46,7 +46,7 @@ TEST_CASE("Send event function", "[send_event]")
         REQUIRE(sent_event.contains("data"));
         REQUIRE(sent_event["data"]["key"] == "value");
         REQUIRE(sent_event["data"]["count"] == 42);
-        REQUIRE(validate_super_schema(sent_event));
+        REQUIRE(validateSuperSchema(sent_event));
     }
 
     SECTION("Sends event with all optional parameters")
@@ -58,7 +58,7 @@ TEST_CASE("Send event function", "[send_event]")
         };
 
         std::string pid = "550e8400-e29b-41d4-a716-446655440010";
-        auto send_event = get_send_event_function(send, pid);
+        auto send_event = getSendEventFunction(send, pid);
 
         std::string cid = "550e8400-e29b-41d4-a716-446655440020";
         std::string uid = "550e8400-e29b-41d4-a716-446655440030";
@@ -69,7 +69,7 @@ TEST_CASE("Send event function", "[send_event]")
         REQUIRE(sent_event["metadata"]["cid"] == cid);
         REQUIRE(sent_event["metadata"]["uid"] == uid);
         REQUIRE(sent_event["metadata"]["token"] == token);
-        REQUIRE(validate_super_schema(sent_event));
+        REQUIRE(validateSuperSchema(sent_event));
     }
 
     SECTION("Uses data preprocessor")
@@ -90,14 +90,14 @@ TEST_CASE("Send event function", "[send_event]")
             return processed;
         };
 
-        auto send_event = get_send_event_function(send, pid, preprocessors);
+        auto send_event = getSendEventFunction(send, pid, preprocessors);
 
         json event_data = {{"original", "data"}};
         send_event("test.event", event_data, "", "", "");
 
         REQUIRE(sent_event["data"]["original"] == "data");
         REQUIRE(sent_event["data"]["processed"] == true);
-        REQUIRE(validate_super_schema(sent_event));
+        REQUIRE(validateSuperSchema(sent_event));
     }
 
     SECTION("Uses default preprocessor when specific not found")
@@ -118,29 +118,29 @@ TEST_CASE("Send event function", "[send_event]")
             return processed;
         };
 
-        auto send_event = get_send_event_function(send, pid, preprocessors);
+        auto send_event = getSendEventFunction(send, pid, preprocessors);
 
         json event_data = {{"original", "data"}};
         send_event("other.event", event_data, "", "", "");
 
         REQUIRE(sent_event["data"]["original"] == "data");
         REQUIRE(sent_event["data"]["default_processed"] == true);
-        REQUIRE(validate_super_schema(sent_event));
+        REQUIRE(validateSuperSchema(sent_event));
     }
 
     SECTION("Generated UUIDs are valid")
     {
         for (int i = 0; i < 10; i++)
         {
-            std::string uuid = generate_uuid();
-            REQUIRE(is_valid_uuid(uuid));
+            std::string uuid = generateUuid();
+            REQUIRE(isValidUuid(uuid));
         }
     }
 
     SECTION("Generated UUIDs are unique")
     {
-        std::string uuid1 = generate_uuid();
-        std::string uuid2 = generate_uuid();
+        std::string uuid1 = generateUuid();
+        std::string uuid2 = generateUuid();
         REQUIRE(uuid1 != uuid2);
     }
 
@@ -153,7 +153,7 @@ TEST_CASE("Send event function", "[send_event]")
         };
 
         std::string pid = "550e8400-e29b-41d4-a716-446655440010";
-        auto send_event = get_send_event_function(send, pid);
+        auto send_event = getSendEventFunction(send, pid);
 
         send_event("test.event", json{}, "", "", "");
 
@@ -169,7 +169,7 @@ TEST_CASE("Send event function", "[send_event]")
         };
 
         std::string pid = "550e8400-e29b-41d4-a716-446655440010";
-        auto send_event = get_send_event_function(send, pid);
+        auto send_event = getSendEventFunction(send, pid);
 
         send_event("test.event", json{}, "", "", "");
 

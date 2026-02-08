@@ -16,7 +16,7 @@ namespace EventSuperschema {
 /// dispatcher.
 /// @return A dispatcher that will validate incoming events against the super-schema and call the
 ///         appropriate event handler if one is available.
-EventDispatcher get_event_dispatcher(const ErrorHandler& err, const EventHandlers& handlers);
+EventDispatcher getEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers);
 
 }  // namespace EventSuperschema
 }  // namespace Vlinder

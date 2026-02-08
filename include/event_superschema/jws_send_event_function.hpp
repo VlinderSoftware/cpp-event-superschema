@@ -15,9 +15,9 @@ namespace EventSuperschema {
 /// @param signing_key Key used to sign events (placeholder)
 /// @param data_preprocessors Optional data preprocessors
 /// @return A function that signs events before sending
-SendEventFunction get_jws_send_event_function(const SendFunction& send, const std::string& pid,
-                                              const std::string& signing_key,
-                                              const DataPreprocessors& data_preprocessors = {});
+SendEventFunction getJWSSendEventFunction(const SendFunction& send, const std::string& pid,
+                                          const std::string& signing_key,
+                                          const DataPreprocessors& data_preprocessors = {});
 
 }  // namespace EventSuperschema
 }  // namespace Vlinder

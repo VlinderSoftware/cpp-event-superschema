@@ -21,7 +21,7 @@ const json super_schema = {{"type", "object"},
                              {"data", {{"type", "object"}}}}},
                            {"required", {"id", "type", "metadata"}}};
 
-bool is_valid_uuid(const std::string& uuid_str)
+bool isValidUuid(const std::string& uuid_str)
 {
     // UUID v4 regex pattern
     static const std::regex uuid_pattern(
@@ -29,7 +29,7 @@ bool is_valid_uuid(const std::string& uuid_str)
     return std::regex_match(uuid_str, uuid_pattern);
 }
 
-bool validate_super_schema(const json& event)
+bool validateSuperSchema(const json& event)
 {
     // Check if event is an object
     if (!event.is_object())
@@ -44,7 +44,7 @@ bool validate_super_schema(const json& event)
     }
 
     // Validate id is a string and UUID format
-    if (!event["id"].is_string() || !is_valid_uuid(event["id"].get<std::string>()))
+    if (!event["id"].is_string() || !isValidUuid(event["id"].get<std::string>()))
     {
         return false;
     }
@@ -69,11 +69,11 @@ bool validate_super_schema(const json& event)
     }
 
     // Validate cid and pid are UUIDs
-    if (!metadata["cid"].is_string() || !is_valid_uuid(metadata["cid"].get<std::string>()))
+    if (!metadata["cid"].is_string() || !isValidUuid(metadata["cid"].get<std::string>()))
     {
         return false;
     }
-    if (!metadata["pid"].is_string() || !is_valid_uuid(metadata["pid"].get<std::string>()))
+    if (!metadata["pid"].is_string() || !isValidUuid(metadata["pid"].get<std::string>()))
     {
         return false;
     }
@@ -81,14 +81,14 @@ bool validate_super_schema(const json& event)
     // Validate optional UUID fields if present
     if (metadata.contains("tid"))
     {
-        if (!metadata["tid"].is_string() || !is_valid_uuid(metadata["tid"].get<std::string>()))
+        if (!metadata["tid"].is_string() || !isValidUuid(metadata["tid"].get<std::string>()))
         {
             return false;
         }
     }
     if (metadata.contains("uid"))
     {
-        if (!metadata["uid"].is_string() || !is_valid_uuid(metadata["uid"].get<std::string>()))
+        if (!metadata["uid"].is_string() || !isValidUuid(metadata["uid"].get<std::string>()))
         {
             return false;
         }

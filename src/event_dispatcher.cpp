@@ -7,12 +7,12 @@
 namespace Vlinder {
 namespace EventSuperschema {
 
-EventDispatcher get_event_dispatcher(const ErrorHandler& err, const EventHandlers& handlers)
+EventDispatcher getEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers)
 {
     return [err, handlers](const json& event)
     {
         // Validate against super-schema
-        if (!validate_super_schema(event))
+        if (!validateSuperSchema(event))
         {
             err({"SchemaMismatchError", "Event does not match event schema"});
             return;

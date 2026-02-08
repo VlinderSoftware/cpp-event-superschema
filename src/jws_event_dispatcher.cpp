@@ -5,11 +5,11 @@
 namespace Vlinder {
 namespace EventSuperschema {
 
-EventDispatcher get_jws_event_dispatcher(const ErrorHandler& err, const EventHandlers& handlers,
-                                         const std::string& verification_key)
+EventDispatcher getJWSEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers,
+                                      const std::string& verification_key)
 {
     // Get the base dispatcher
-    auto base_dispatcher = get_event_dispatcher(err, handlers);
+    auto base_dispatcher = getEventDispatcher(err, handlers);
 
     // Return a wrapper that verifies signature before dispatching
     return [base_dispatcher, err, verification_key](const json& signed_event)

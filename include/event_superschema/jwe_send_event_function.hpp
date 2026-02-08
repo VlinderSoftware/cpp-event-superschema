@@ -15,9 +15,9 @@ namespace EventSuperschema {
 /// @param encryption_key Key used to encrypt events (placeholder)
 /// @param data_preprocessors Optional data preprocessors
 /// @return A function that encrypts events before sending
-SendEventFunction get_jwe_send_event_function(const SendFunction& send, const std::string& pid,
-                                              const std::string& encryption_key,
-                                              const DataPreprocessors& data_preprocessors = {});
+SendEventFunction getJWESendEventFunction(const SendFunction& send, const std::string& pid,
+                                          const std::string& encryption_key,
+                                          const DataPreprocessors& data_preprocessors = {});
 
 }  // namespace EventSuperschema
 }  // namespace Vlinder
