@@ -5,7 +5,7 @@
 #include "event_superschema/super_schema.hpp"
 
 namespace Vlinder {
-namespace EventSuperschema {
+namespace EventSuperSchema {
 
 EventDispatcher getEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers)
 {
@@ -51,5 +51,5 @@ EventDispatcher getEventDispatcher(const ErrorHandler& err, const EventHandlers&
     };
 }
 
-}  // namespace EventSuperschema
+}  // namespace EventSuperSchema
 }  // namespace Vlinder

@@ -3,7 +3,7 @@
 #include "event_superschema/event_dispatcher.hpp"
 
 namespace Vlinder {
-namespace EventSuperschema {
+namespace EventSuperSchema {
 
 EventDispatcher getJWEEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers,
                                       const std::string& decryption_key)
@@ -28,5 +28,5 @@ EventDispatcher getJWEEventDispatcher(const ErrorHandler& err, const EventHandle
     };
 }
 
-}  // namespace EventSuperschema
+}  // namespace EventSuperSchema
 }  // namespace Vlinder

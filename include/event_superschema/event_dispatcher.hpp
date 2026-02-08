@@ -3,7 +3,7 @@
 #include "types.hpp"
 
 namespace Vlinder {
-namespace EventSuperschema {
+namespace EventSuperSchema {
 
 /// Get an event dispatcher
 ///
@@ -18,5 +18,5 @@ namespace EventSuperschema {
 ///         appropriate event handler if one is available.
 EventDispatcher getEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers);
 
-}  // namespace EventSuperschema
+}  // namespace EventSuperSchema
 }  // namespace Vlinder

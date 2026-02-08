@@ -3,7 +3,7 @@
 #include <regex>
 
 namespace Vlinder {
-namespace EventSuperschema {
+namespace EventSuperSchema {
 
 const json super_schema = {{"type", "object"},
                            {"properties",
@@ -109,5 +109,5 @@ bool validate(const json& event)
     return true;
 }
 
-}  // namespace EventSuperschema
+}  // namespace EventSuperSchema
 }  // namespace Vlinder

@@ -6,7 +6,7 @@
 #include <string>
 
 namespace Vlinder {
-namespace EventSuperschema {
+namespace EventSuperSchema {
 
 using json = nlohmann::json;
 
@@ -34,5 +34,5 @@ using SendEventFunction =
     std::function<void(const std::string& event_type, const json& event_data,
                        const std::string& cid, const std::string& uid, const std::string& token)>;
 
-}  // namespace EventSuperschema
+}  // namespace EventSuperSchema
 }  // namespace Vlinder

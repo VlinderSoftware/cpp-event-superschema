@@ -2,7 +2,7 @@
 
 #include "event_superschema/event_dispatcher.hpp"
 
-using namespace Vlinder::EventSuperschema;
+using namespace Vlinder::EventSuperSchema;
 
 TEST_CASE("Event dispatcher", "[dispatcher]")
 {

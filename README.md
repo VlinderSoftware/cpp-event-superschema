@@ -44,7 +44,7 @@ ctest --output-on-failure
 #include <event_superschema/event_dispatcher.hpp>
 #include <iostream>
 
-using namespace Vlinder::EventSuperschema;
+using namespace Vlinder::EventSuperSchema;
 
 int main() {
     // Define error handler
@@ -93,7 +93,7 @@ int main() {
 #include <event_superschema/send_event_function.hpp>
 #include <iostream>
 
-using namespace Vlinder::EventSuperschema;
+using namespace Vlinder::EventSuperSchema;
 
 int main() {
     // Define send function (e.g., publish to message queue)
@@ -139,7 +139,7 @@ int main() {
 #include <event_superschema/super_schema.hpp>
 #include <iostream>
 
-using namespace Vlinder::EventSuperschema;
+using namespace Vlinder::EventSuperSchema;
 
 int main() {
     json event = {

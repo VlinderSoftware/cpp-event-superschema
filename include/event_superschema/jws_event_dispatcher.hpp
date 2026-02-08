@@ -3,7 +3,7 @@
 #include "types.hpp"
 
 namespace Vlinder {
-namespace EventSuperschema {
+namespace EventSuperSchema {
 
 /// Get a JWS (JSON Web Signature) event dispatcher
 ///
@@ -17,5 +17,5 @@ namespace EventSuperschema {
 EventDispatcher getJWSEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers,
                                       const std::string& verification_key);
 
-}  // namespace EventSuperschema
+}  // namespace EventSuperSchema
 }  // namespace Vlinder

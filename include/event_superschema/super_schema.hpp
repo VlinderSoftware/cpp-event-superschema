@@ -4,7 +4,7 @@
 #include <string>
 
 namespace Vlinder {
-namespace EventSuperschema {
+namespace EventSuperSchema {
 
 using json = nlohmann::json;
 
@@ -17,5 +17,5 @@ bool validate(const json& event);
 // Helper function to validate UUID format
 bool validateUUID(const std::string& uuid_str);
 
-}  // namespace EventSuperschema
+}  // namespace EventSuperSchema
 }  // namespace Vlinder

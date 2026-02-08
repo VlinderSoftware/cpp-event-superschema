@@ -5,7 +5,7 @@
 #include <sstream>
 
 namespace Vlinder {
-namespace EventSuperschema {
+namespace EventSuperSchema {
 
 std::string generateUuid()
 {
@@ -107,5 +107,5 @@ SendEventFunction getSendEventFunction(const SendFunction& send, const std::stri
     };
 }
 
-}  // namespace EventSuperschema
+}  // namespace EventSuperSchema
 }  // namespace Vlinder
