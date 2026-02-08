@@ -1,6 +1,6 @@
 # C++ Event Superschema
 
-A C++17 library for event validation, dispatching, and formatting with support for the event superschema standard. This library provides a robust foundation for event-driven architectures with type-safe event handling and schema validation.
+A C++20 library for event validation, dispatching, and formatting with support for the event superschema standard. This library provides a robust foundation for event-driven architectures with type-safe event handling and schema validation.
 
 ## Features
 
@@ -9,12 +9,12 @@ A C++17 library for event validation, dispatching, and formatting with support f
 - **Event Formatting**: Automatic event formatting with UUID generation and metadata management
 - **Data Preprocessing**: Transform event data before sending
 - **JWE/JWS Support**: Placeholder implementations for encrypted and signed events (extensible with crypto libraries)
-- **Modern C++**: Uses C++17 features, smart pointers, and functional programming patterns
+- **Modern C++**: Uses C++20 features, smart pointers, and functional programming patterns
 
 ## Dependencies
 
 - **CMake 3.14+**: Build system
-- **C++17 compiler**: GCC 7+, Clang 5+, or MSVC 2017+
+- **C++20 compiler**: GCC 10+, Clang 10+, or MSVC 2019+
 - **nlohmann/json**: JSON handling (automatically fetched via CMake)
 - **Catch2**: Testing framework (automatically fetched via CMake)
 
