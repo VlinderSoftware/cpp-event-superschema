@@ -6,7 +6,7 @@ namespace Vlinder {
 namespace EventSuperSchema {
 
 SendEventFunction getJWESendEventFunction(const SendFunction& send, const std::string& pid,
-                                          const std::string& encryption_key,
+                                          const std::vector<uint8_t>& encryption_key,
                                           const DataPreprocessors& data_preprocessors)
 {
     // Get the base send function

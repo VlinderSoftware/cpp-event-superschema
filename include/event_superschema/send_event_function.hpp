@@ -21,7 +21,7 @@ SendEventFunction getSendEventFunction(const SendFunction& send, const std::stri
                                        const DataPreprocessors& data_preprocessors = {});
 
 // Helper function to generate UUID v4
-std::string generateUuid();
+std::string generateUUID();
 
 }  // namespace EventSuperSchema
 }  // namespace Vlinder

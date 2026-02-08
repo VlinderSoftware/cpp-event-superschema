@@ -225,11 +225,11 @@ Validates an event against the superschema.
 bool validate(const json& event);
 ```
 
-#### `generateUuid`
+#### `generateUUID`
 Generates a UUID v4 string.
 
 ```cpp
-std::string generateUuid();
+std::string generateUUID();
 ```
 
 ### JWE/JWS Functions (Placeholder)

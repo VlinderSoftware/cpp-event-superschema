@@ -6,7 +6,7 @@ namespace Vlinder {
 namespace EventSuperSchema {
 
 SendEventFunction getJWSSendEventFunction(const SendFunction& send, const std::string& pid,
-                                          const std::string& signing_key,
+                                          const std::vector<uint8_t>& signing_key,
                                           const DataPreprocessors& data_preprocessors)
 {
     // Get the base send function

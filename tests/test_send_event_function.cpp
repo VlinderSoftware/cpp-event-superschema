@@ -132,15 +132,15 @@ TEST_CASE("Send event function", "[send_event]")
     {
         for (int i = 0; i < 10; i++)
         {
-            std::string uuid = generateUuid();
+            std::string uuid = generateUUID();
             REQUIRE(validateUUID(uuid));
         }
     }
 
     SECTION("Generated UUIDs are unique")
     {
-        std::string uuid1 = generateUuid();
-        std::string uuid2 = generateUuid();
+        std::string uuid1 = generateUUID();
+        std::string uuid2 = generateUUID();
         REQUIRE(uuid1 != uuid2);
     }
 

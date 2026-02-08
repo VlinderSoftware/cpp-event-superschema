@@ -6,7 +6,7 @@ namespace Vlinder {
 namespace EventSuperSchema {
 
 EventDispatcher getJWEEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers,
-                                      const std::string& decryption_key)
+                                      const std::vector<uint8_t>& decryption_key)
 {
     // Get the base dispatcher
     auto base_dispatcher = getEventDispatcher(err, handlers);

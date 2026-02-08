@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "types.hpp"
 
 namespace Vlinder {
@@ -16,7 +18,7 @@ namespace EventSuperSchema {
 /// @param data_preprocessors Optional data preprocessors
 /// @return A function that encrypts events before sending
 SendEventFunction getJWESendEventFunction(const SendFunction& send, const std::string& pid,
-                                          const std::string& encryption_key,
+                                          const std::vector<uint8_t>& encryption_key,
                                           const DataPreprocessors& data_preprocessors = {});
 
 }  // namespace EventSuperSchema

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "types.hpp"
 
 namespace Vlinder {
@@ -16,7 +18,7 @@ namespace EventSuperSchema {
 /// @param data_preprocessors Optional data preprocessors
 /// @return A function that signs events before sending
 SendEventFunction getJWSSendEventFunction(const SendFunction& send, const std::string& pid,
-                                          const std::string& signing_key,
+                                          const std::vector<uint8_t>& signing_key,
                                           const DataPreprocessors& data_preprocessors = {});
 
 }  // namespace EventSuperSchema

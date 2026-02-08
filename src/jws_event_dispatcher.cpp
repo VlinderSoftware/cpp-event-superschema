@@ -6,7 +6,7 @@ namespace Vlinder {
 namespace EventSuperSchema {
 
 EventDispatcher getJWSEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers,
-                                      const std::string& verification_key)
+                                      const std::vector<uint8_t>& verification_key)
 {
     // Get the base dispatcher
     auto base_dispatcher = getEventDispatcher(err, handlers);
