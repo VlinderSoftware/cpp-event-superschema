@@ -16,7 +16,7 @@ struct ErrorMessage
     std::string error;
     std::string message;
 
-    json to_json() const
+    json toJSON() const
     {
         return {{"error", error}, {"message", message}};
     }

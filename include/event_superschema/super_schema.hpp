@@ -12,10 +12,10 @@ using json = nlohmann::json;
 extern const json super_schema;
 
 // Validate an event against the super-schema
-bool validateSuperSchema(const json& event);
+bool validate(const json& event);
 
 // Helper function to validate UUID format
-bool isValidUuid(const std::string& uuid_str);
+bool validateUUID(const std::string& uuid_str);
 
 }  // namespace EventSuperschema
 }  // namespace Vlinder

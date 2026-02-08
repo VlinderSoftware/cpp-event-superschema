@@ -25,7 +25,7 @@ TEST_CASE("Send event function", "[send_event]")
         REQUIRE(sent_event.contains("metadata"));
         REQUIRE(sent_event["type"] == "test.event");
         REQUIRE(sent_event["metadata"]["pid"] == pid);
-        REQUIRE(validateSuperSchema(sent_event));
+        REQUIRE(validate(sent_event));
     }
 
     SECTION("Sends event with data")
@@ -46,7 +46,7 @@ TEST_CASE("Send event function", "[send_event]")
         REQUIRE(sent_event.contains("data"));
         REQUIRE(sent_event["data"]["key"] == "value");
         REQUIRE(sent_event["data"]["count"] == 42);
-        REQUIRE(validateSuperSchema(sent_event));
+        REQUIRE(validate(sent_event));
     }
 
     SECTION("Sends event with all optional parameters")
@@ -69,7 +69,7 @@ TEST_CASE("Send event function", "[send_event]")
         REQUIRE(sent_event["metadata"]["cid"] == cid);
         REQUIRE(sent_event["metadata"]["uid"] == uid);
         REQUIRE(sent_event["metadata"]["token"] == token);
-        REQUIRE(validateSuperSchema(sent_event));
+        REQUIRE(validate(sent_event));
     }
 
     SECTION("Uses data preprocessor")
@@ -97,7 +97,7 @@ TEST_CASE("Send event function", "[send_event]")
 
         REQUIRE(sent_event["data"]["original"] == "data");
         REQUIRE(sent_event["data"]["processed"] == true);
-        REQUIRE(validateSuperSchema(sent_event));
+        REQUIRE(validate(sent_event));
     }
 
     SECTION("Uses default preprocessor when specific not found")
@@ -125,7 +125,7 @@ TEST_CASE("Send event function", "[send_event]")
 
         REQUIRE(sent_event["data"]["original"] == "data");
         REQUIRE(sent_event["data"]["default_processed"] == true);
-        REQUIRE(validateSuperSchema(sent_event));
+        REQUIRE(validate(sent_event));
     }
 
     SECTION("Generated UUIDs are valid")
@@ -133,7 +133,7 @@ TEST_CASE("Send event function", "[send_event]")
         for (int i = 0; i < 10; i++)
         {
             std::string uuid = generateUuid();
-            REQUIRE(isValidUuid(uuid));
+            REQUIRE(validateUUID(uuid));
         }
     }
 

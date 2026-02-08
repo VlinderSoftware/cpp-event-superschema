@@ -14,7 +14,7 @@ TEST_CASE("Super schema validation", "[super_schema]")
                              {{"cid", "550e8400-e29b-41d4-a716-446655440001"},
                               {"pid", "550e8400-e29b-41d4-a716-446655440002"}}}};
 
-        REQUIRE(validateSuperSchema(valid_event));
+        REQUIRE(validate(valid_event));
     }
 
     SECTION("Valid event with all optional fields")
@@ -29,7 +29,7 @@ TEST_CASE("Super schema validation", "[super_schema]")
                               {"token", "some-token"}}},
                             {"data", {{"key", "value"}}}};
 
-        REQUIRE(validateSuperSchema(valid_event));
+        REQUIRE(validate(valid_event));
     }
 
     SECTION("Invalid - missing id")
@@ -39,7 +39,7 @@ TEST_CASE("Super schema validation", "[super_schema]")
                                {{"cid", "550e8400-e29b-41d4-a716-446655440001"},
                                 {"pid", "550e8400-e29b-41d4-a716-446655440002"}}}};
 
-        REQUIRE_FALSE(validateSuperSchema(invalid_event));
+        REQUIRE_FALSE(validate(invalid_event));
     }
 
     SECTION("Invalid - missing type")
@@ -49,7 +49,7 @@ TEST_CASE("Super schema validation", "[super_schema]")
                                {{"cid", "550e8400-e29b-41d4-a716-446655440001"},
                                 {"pid", "550e8400-e29b-41d4-a716-446655440002"}}}};
 
-        REQUIRE_FALSE(validateSuperSchema(invalid_event));
+        REQUIRE_FALSE(validate(invalid_event));
     }
 
     SECTION("Invalid - missing metadata")
@@ -57,7 +57,7 @@ TEST_CASE("Super schema validation", "[super_schema]")
         json invalid_event = {{"id", "550e8400-e29b-41d4-a716-446655440000"},
                               {"type", "test.event"}};
 
-        REQUIRE_FALSE(validateSuperSchema(invalid_event));
+        REQUIRE_FALSE(validate(invalid_event));
     }
 
     SECTION("Invalid - missing cid in metadata")
@@ -66,7 +66,7 @@ TEST_CASE("Super schema validation", "[super_schema]")
                               {"type", "test.event"},
                               {"metadata", {{"pid", "550e8400-e29b-41d4-a716-446655440002"}}}};
 
-        REQUIRE_FALSE(validateSuperSchema(invalid_event));
+        REQUIRE_FALSE(validate(invalid_event));
     }
 
     SECTION("Invalid - missing pid in metadata")
@@ -75,7 +75,7 @@ TEST_CASE("Super schema validation", "[super_schema]")
                               {"type", "test.event"},
                               {"metadata", {{"cid", "550e8400-e29b-41d4-a716-446655440001"}}}};
 
-        REQUIRE_FALSE(validateSuperSchema(invalid_event));
+        REQUIRE_FALSE(validate(invalid_event));
     }
 
     SECTION("Invalid - bad UUID format in id")
@@ -86,7 +86,7 @@ TEST_CASE("Super schema validation", "[super_schema]")
                                {{"cid", "550e8400-e29b-41d4-a716-446655440001"},
                                 {"pid", "550e8400-e29b-41d4-a716-446655440002"}}}};
 
-        REQUIRE_FALSE(validateSuperSchema(invalid_event));
+        REQUIRE_FALSE(validate(invalid_event));
     }
 
     SECTION("Invalid - bad UUID format in cid")
@@ -96,7 +96,7 @@ TEST_CASE("Super schema validation", "[super_schema]")
             {"type", "test.event"},
             {"metadata", {{"cid", "bad-uuid"}, {"pid", "550e8400-e29b-41d4-a716-446655440002"}}}};
 
-        REQUIRE_FALSE(validateSuperSchema(invalid_event));
+        REQUIRE_FALSE(validate(invalid_event));
     }
 
     SECTION("Invalid - data is not an object")
@@ -108,7 +108,7 @@ TEST_CASE("Super schema validation", "[super_schema]")
                                 {"pid", "550e8400-e29b-41d4-a716-446655440002"}}},
                               {"data", "not-an-object"}};
 
-        REQUIRE_FALSE(validateSuperSchema(invalid_event));
+        REQUIRE_FALSE(validate(invalid_event));
     }
 }
 
@@ -116,17 +116,17 @@ TEST_CASE("UUID validation", "[uuid]")
 {
     SECTION("Valid UUIDs")
     {
-        REQUIRE(isValidUuid("550e8400-e29b-41d4-a716-446655440000"));
-        REQUIRE(isValidUuid("6ba7b810-9dad-11d1-80b4-00c04fd430c8"));
-        REQUIRE(isValidUuid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"));
+        REQUIRE(validateUUID("550e8400-e29b-41d4-a716-446655440000"));
+        REQUIRE(validateUUID("6ba7b810-9dad-11d1-80b4-00c04fd430c8"));
+        REQUIRE(validateUUID("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"));
     }
 
     SECTION("Invalid UUIDs")
     {
-        REQUIRE_FALSE(isValidUuid("not-a-uuid"));
-        REQUIRE_FALSE(isValidUuid("550e8400-e29b-41d4-a716"));
-        REQUIRE_FALSE(isValidUuid("550e8400-e29b-41d4-a716-446655440000-extra"));
-        REQUIRE_FALSE(isValidUuid(""));
-        REQUIRE_FALSE(isValidUuid("550e8400e29b41d4a716446655440000"));  // Missing hyphens
+        REQUIRE_FALSE(validateUUID("not-a-uuid"));
+        REQUIRE_FALSE(validateUUID("550e8400-e29b-41d4-a716"));
+        REQUIRE_FALSE(validateUUID("550e8400-e29b-41d4-a716-446655440000-extra"));
+        REQUIRE_FALSE(validateUUID(""));
+        REQUIRE_FALSE(validateUUID("550e8400e29b41d4a716446655440000"));  // Missing hyphens
     }
 }

@@ -12,7 +12,7 @@ EventDispatcher getEventDispatcher(const ErrorHandler& err, const EventHandlers&
     return [err, handlers](const json& event)
     {
         // Validate against super-schema
-        if (!validateSuperSchema(event))
+        if (!validate(event))
         {
             err({"SchemaMismatchError", "Event does not match event schema"});
             return;
