@@ -61,6 +61,7 @@ SendEventFunction getSendEventFunction(const SendFunction& send, const std::stri
         };
     }
 
+    //TODO: event_data could be anything, not just json -- that's why we have preprocessors to convert it to json. We might want to change the type of event_data to be more generic (e.g., std::any) and let preprocessors handle the conversion to json. For now, we assume it's always json for simplicity.
     return [send, pid, preprocessors](const std::string& event_type,
                                       const json& event_data = json{}, const std::string& cid = "",
                                       const std::string& uid = "", const std::string& token = "")
