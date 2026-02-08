@@ -1,27 +1,29 @@
 #include "event_superschema/jwe_send_event_function.hpp"
+
 #include "event_superschema/send_event_function.hpp"
 
-namespace event_superschema {
+namespace Vlinder {
+namespace EventSuperSchema {
 
-SendEventFunction get_jwe_send_event_function(
-    const SendFunction& send,
-    const std::string& pid,
-    const std::string& encryption_key,
-    const DataPreprocessors& data_preprocessors
-) {
+SendEventFunction getJWESendEventFunction(const SendFunction& send, const std::string& pid,
+                                          const std::vector<uint8_t>& encryption_key,
+                                          const DataPreprocessors& data_preprocessors)
+{
     // Get the base send function
-    auto base_send = get_send_event_function(send, pid, data_preprocessors);
+    auto base_send = getSendEventFunction(send, pid, data_preprocessors);
 
+    //TODO
     // Placeholder: In production, create a wrapper that encrypts
     // For now, just use the base send function
-    (void)encryption_key; // Suppress unused warning
-    
+    (void)encryption_key;  // Suppress unused warning
+
     // In real implementation, you would:
     // 1. Use base_send to format the event
     // 2. Encrypt the formatted event using encryption_key
     // 3. Send the encrypted JWE token
-    
+
     return base_send;
 }
 
-} // namespace event_superschema
+}  // namespace EventSuperSchema
+}  // namespace Vlinder

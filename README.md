@@ -1,6 +1,6 @@
 # C++ Event Superschema
 
-A C++17 library for event validation, dispatching, and formatting with support for the event superschema standard. This library provides a robust foundation for event-driven architectures with type-safe event handling and schema validation.
+A C++20 library for event validation, dispatching, and formatting with support for the event superschema standard. This library provides a robust foundation for event-driven architectures with type-safe event handling and schema validation.
 
 ## Features
 
@@ -9,12 +9,12 @@ A C++17 library for event validation, dispatching, and formatting with support f
 - **Event Formatting**: Automatic event formatting with UUID generation and metadata management
 - **Data Preprocessing**: Transform event data before sending
 - **JWE/JWS Support**: Placeholder implementations for encrypted and signed events (extensible with crypto libraries)
-- **Modern C++**: Uses C++17 features, smart pointers, and functional programming patterns
+- **Modern C++**: Uses C++20 features, smart pointers, and functional programming patterns
 
 ## Dependencies
 
 - **CMake 3.14+**: Build system
-- **C++17 compiler**: GCC 7+, Clang 5+, or MSVC 2017+
+- **C++20 compiler**: GCC 10+, Clang 10+, or MSVC 2019+
 - **nlohmann/json**: JSON handling (automatically fetched via CMake)
 - **Catch2**: Testing framework (automatically fetched via CMake)
 
@@ -44,7 +44,7 @@ ctest --output-on-failure
 #include <event_superschema/event_dispatcher.hpp>
 #include <iostream>
 
-using namespace event_superschema;
+using namespace Vlinder::EventSuperSchema;
 
 int main() {
     // Define error handler
@@ -66,7 +66,7 @@ int main() {
     };
 
     // Create dispatcher
-    auto dispatcher = get_event_dispatcher(err, handlers);
+    auto dispatcher = getEventDispatcher(err, handlers);
 
     // Dispatch an event
     json event = {
@@ -93,7 +93,7 @@ int main() {
 #include <event_superschema/send_event_function.hpp>
 #include <iostream>
 
-using namespace event_superschema;
+using namespace Vlinder::EventSuperSchema;
 
 int main() {
     // Define send function (e.g., publish to message queue)
@@ -113,7 +113,7 @@ int main() {
     };
 
     // Create send event function
-    auto send_event = get_send_event_function(send, pid, preprocessors);
+    auto send_event = getSendEventFunction(send, pid, preprocessors);
 
     // Send an event
     json order_data = {
@@ -139,7 +139,7 @@ int main() {
 #include <event_superschema/super_schema.hpp>
 #include <iostream>
 
-using namespace event_superschema;
+using namespace Vlinder::EventSuperSchema;
 
 int main() {
     json event = {
@@ -151,7 +151,7 @@ int main() {
         }}
     };
 
-    if (validate_super_schema(event)) {
+    if (validate(event)) {
         std::cout << "Event is valid!" << std::endl;
     } else {
         std::cout << "Event is invalid!" << std::endl;
@@ -184,11 +184,11 @@ All events must conform to this schema:
 
 ### Core Functions
 
-#### `get_event_dispatcher`
+#### `getEventDispatcher`
 Creates an event dispatcher that validates and routes events.
 
 ```cpp
-EventDispatcher get_event_dispatcher(
+EventDispatcher getEventDispatcher(
     const ErrorHandler& err,
     const EventHandlers& handlers
 );
@@ -200,11 +200,11 @@ EventDispatcher get_event_dispatcher(
 
 **Returns:** Event dispatcher function
 
-#### `get_send_event_function`
+#### `getSendEventFunction`
 Creates a function to format and send events.
 
 ```cpp
-SendEventFunction get_send_event_function(
+SendEventFunction getSendEventFunction(
     const SendFunction& send,
     const std::string& pid,
     const DataPreprocessors& data_preprocessors = {}
@@ -218,28 +218,28 @@ SendEventFunction get_send_event_function(
 
 **Returns:** Send event function
 
-#### `validate_super_schema`
+#### `validate`
 Validates an event against the superschema.
 
 ```cpp
-bool validate_super_schema(const json& event);
+bool validate(const json& event);
 ```
 
-#### `generate_uuid`
+#### `generateUUID`
 Generates a UUID v4 string.
 
 ```cpp
-std::string generate_uuid();
+std::string generateUUID();
 ```
 
 ### JWE/JWS Functions (Placeholder)
 
 The library includes placeholder implementations for JWE (encryption) and JWS (signing):
 
-- `get_jwe_event_dispatcher()` - Decrypt events before dispatching
-- `get_jws_event_dispatcher()` - Verify signatures before dispatching
-- `get_jwe_send_event_function()` - Encrypt events before sending
-- `get_jws_send_event_function()` - Sign events before sending
+- `getJWEEventDispatcher()` - Decrypt events before dispatching
+- `getJWSEventDispatcher()` - Verify signatures before dispatching
+- `getJWESendEventFunction()` - Encrypt events before sending
+- `getJWSSendEventFunction()` - Sign events before sending
 
 These can be extended with actual crypto implementations using libraries like [jwt-cpp](https://github.com/Thalhammer/jwt-cpp).
 

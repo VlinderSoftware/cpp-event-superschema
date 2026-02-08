@@ -1,20 +1,20 @@
 #include "event_superschema/event_dispatcher.hpp"
-#include "event_superschema/super_schema.hpp"
+
 #include <algorithm>
 
-namespace event_superschema {
+#include "event_superschema/super_schema.hpp"
 
-EventDispatcher get_event_dispatcher(
-    const ErrorHandler& err,
-    const EventHandlers& handlers
-) {
-    return [err, handlers](const json& event) {
+namespace Vlinder {
+namespace EventSuperSchema {
+
+EventDispatcher getEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers)
+{
+    return [err, handlers](const json& event)
+    {
         // Validate against super-schema
-        if (!validate_super_schema(event)) {
-            err({
-                "SchemaMismatchError",
-                "Event does not match event schema"
-            });
+        if (!validate(event))
+        {
+            err({"SchemaMismatchError", "Event does not match event schema"});
             return;
         }
 
@@ -23,17 +23,20 @@ EventDispatcher get_event_dispatcher(
 
         // Try to find exact match
         auto it = handlers.find(event_type);
-        if (it != handlers.end()) {
+        if (it != handlers.end())
+        {
             it->second(err, event);
             return;
         }
 
         // Try to find base event name (strip version suffix after last ':')
         auto colon_pos = event_type.rfind(':');
-        if (colon_pos != std::string::npos) {
+        if (colon_pos != std::string::npos)
+        {
             std::string base_event_name = event_type.substr(0, colon_pos);
             auto base_it = handlers.find(base_event_name);
-            if (base_it != handlers.end()) {
+            if (base_it != handlers.end())
+            {
                 base_it->second(err, event);
                 return;
             }
@@ -41,10 +44,12 @@ EventDispatcher get_event_dispatcher(
 
         // Try default handler
         auto default_it = handlers.find("__default__");
-        if (default_it != handlers.end()) {
+        if (default_it != handlers.end())
+        {
             default_it->second(err, event);
         }
     };
 }
 
-} // namespace event_superschema
+}  // namespace EventSuperSchema
+}  // namespace Vlinder

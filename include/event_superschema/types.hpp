@@ -2,25 +2,27 @@
 
 #include <functional>
 #include <map>
-#include <string>
 #include <nlohmann/json.hpp>
+#include <string>
 
-namespace event_superschema {
+namespace Vlinder {
+namespace EventSuperSchema {
 
 using json = nlohmann::json;
 
 // Error message structure
-struct ErrorMessage {
+struct ErrorMessage
+{
     std::string error;
     std::string message;
-    
-    json to_json() const {
-        return {
-            {"error", error},
-            {"message", message}
-        };
+
+    json toJSON() const
+    {
+        return {{"error", error}, {"message", message}};
     }
 };
+
+//TODO: make UUID a full-fledged type with validation, generation, etc. For now, we just use strings and validate format where needed.
 
 // Type aliases for handlers and functions
 using ErrorHandler = std::function<void(const ErrorMessage&)>;
@@ -30,12 +32,9 @@ using SendFunction = std::function<void(const json&)>;
 using DataPreprocessor = std::function<json(const json&)>;
 using DataPreprocessors = std::map<std::string, DataPreprocessor>;
 using EventDispatcher = std::function<void(const json&)>;
-using SendEventFunction = std::function<void(
-    const std::string& event_type,
-    const json& event_data,
-    const std::string& cid,
-    const std::string& uid,
-    const std::string& token
-)>;
+using SendEventFunction =
+    std::function<void(const std::string& event_type, const json& event_data,
+                       const std::string& cid, const std::string& uid, const std::string& token)>;
 
-} // namespace event_superschema
+}  // namespace EventSuperSchema
+}  // namespace Vlinder

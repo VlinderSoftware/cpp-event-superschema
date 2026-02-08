@@ -1,18 +1,20 @@
 #include "event_superschema/jws_event_dispatcher.hpp"
+
 #include "event_superschema/event_dispatcher.hpp"
 
-namespace event_superschema {
+namespace Vlinder {
+namespace EventSuperSchema {
 
-EventDispatcher get_jws_event_dispatcher(
-    const ErrorHandler& err,
-    const EventHandlers& handlers,
-    const std::string& verification_key
-) {
+EventDispatcher getJWSEventDispatcher(const ErrorHandler& err, const EventHandlers& handlers,
+                                      const std::vector<uint8_t>& verification_key)
+{
     // Get the base dispatcher
-    auto base_dispatcher = get_event_dispatcher(err, handlers);
+    auto base_dispatcher = getEventDispatcher(err, handlers);
 
     // Return a wrapper that verifies signature before dispatching
-    return [base_dispatcher, err, verification_key](const json& signed_event) {
+    return [base_dispatcher, err, verification_key](const json& signed_event)
+    {
+        //TODO
         // Placeholder implementation
         // In production, this would:
         // 1. Verify the event is a valid JWS
@@ -20,12 +22,13 @@ EventDispatcher get_jws_event_dispatcher(
         // 3. Extract the payload
         // 4. Parse the payload as JSON
         // 5. Pass to base_dispatcher
-        
+
         // For now, just pass through (assumes event signature is valid)
         // In real implementation, you would use a library like jwt-cpp
-        (void)verification_key; // Suppress unused warning
+        (void)verification_key;  // Suppress unused warning
         base_dispatcher(signed_event);
     };
 }
 
-} // namespace event_superschema
+}  // namespace EventSuperSchema
+}  // namespace Vlinder
