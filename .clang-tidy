@@ -49,7 +49,7 @@ CheckOptions:
   - key:             readability-identifier-naming.EnumCase
     value:           CamelCase
   - key:             readability-identifier-naming.EnumConstantCase
-    value:           CamelCase
+    value:           lower_case
   - key:             readability-identifier-naming.TypedefCase
     value:           CamelCase
   - key:             readability-identifier-naming.TypeAliasCase
@@ -75,13 +75,19 @@ CheckOptions:
   - key:             readability-identifier-naming.PublicMethodCase
     value:           camelBack
   
-  # Constants: UPPER_CASE (global/static)
+  # Constants: snake_case
   - key:             readability-identifier-naming.GlobalConstantCase
-    value:           UPPER_CASE
+    value:           lower_case
   - key:             readability-identifier-naming.StaticConstantCase
-    value:           UPPER_CASE
+    value:           lower_case
   - key:             readability-identifier-naming.ConstexprVariableCase
+    value:           lower_case
+  
+  # Macros: UPPER_CASE
+  - key:             readability-identifier-naming.MacroDefinitionCase
     value:           UPPER_CASE
+  - key:             readability-identifier-naming.MacroDefinitionIgnoredRegexp
+    value:           '^(TEST_CASE|SECTION|REQUIRE|REQUIRE_FALSE|REQUIRE_NOTHROW|REQUIRE_THROWS|CHECK|CHECK_FALSE|INFO|WARN|CAPTURE|GENERATE|BENCHMARK).*'
   
   # Global variables: snake_case (if any)
   - key:             readability-identifier-naming.GlobalVariableCase
@@ -91,6 +97,6 @@ CheckOptions:
   - key:             readability-braces-around-statements.ShortStatementLines
     value:           '0'
 
-HeaderFilterRegex: '.*'
+HeaderFilterRegex: '.*/(include|src)/.*\.hpp?$'
 
 ...
