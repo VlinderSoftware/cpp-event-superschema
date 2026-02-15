@@ -4,11 +4,19 @@
 - **Formatting:** Use 4 spaces for indentation, braces on new lines (Allman style), and `clang-format` if available.
   - **Exception:** Namespace braces should be on the same line as the namespace declaration.
 - **Naming:**
-    - Types/Classes: `PascalCase`
-    - Namespaces: `PascalCase`
-    - Functions: `camelCase`
-    - Variables: `snake_case`
-    - Private members: `suffix_snake_case_`
+    - **Parameters and local variables:** `snake_case` (all lowercase with underscores)
+    - **Members:** `snake_case_` (all lowercase with underscores, ending with underscore)
+    - **Types (classes, structs, enums, typedefs, type aliases):** `PascalCase`
+      - Acronyms should be all uppercase (e.g., `JWE`, `JWS`, `JSON`, `HTTP`)
+    - **Namespaces:** `PascalCase`
+    - **Functions (both free and member):** `camelCase` (start lowercase, must begin with a verb)
+      - Acronyms stay uppercase within the name (e.g., `toJSON`, `fromJSON`, `sendJWE`)
+      - Where only a verb suffices, use only that verb (e.g., `validate` not `validateEvent`)
+      - Examples: `getEventDispatcher`, `fromJSON`, `toJSON`, `validate`, `send`
+    - **Enum constants:** `PascalCase`
+    - **Global/static constants:** `UPPER_CASE`
+    - **Do not abbreviate common words** (e.g., write `Manager`, `validate`, `implementation`)
+      - Exceptions: well-known acronyms like `JSON`, `JWT`, `JWK`, `JWS`, `JWE`, `HTTP`, `URL`
 - **Namespaces:**
     - The outer namespace should be `Vlinder`
     - Inner namespaces follow PascalCase naming
@@ -23,3 +31,4 @@
     - Use `#pragma once` for header guards.
     - Organize headers: C++ Standard Library, Third-party, Project headers.
 - **Comments:** Use `///` for documentation comments to enable Doxygen formatting.
+- **Linting:** This project uses `clang-tidy` to enforce naming conventions. Run before committing.
