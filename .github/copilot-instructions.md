@@ -13,8 +13,9 @@
       - Acronyms stay uppercase within the name (e.g., `toJSON`, `fromJSON`, `sendJWE`)
       - Where only a verb suffices, use only that verb (e.g., `validate` not `validateEvent`)
       - Examples: `getEventDispatcher`, `fromJSON`, `toJSON`, `validate`, `send`
-    - **Enum constants:** `PascalCase`
-    - **Global/static constants:** `UPPER_CASE`
+    - **Enum constants:** `snake_case` (e.g., `rsa`, `ec`, `signature`, `encryption`)
+    - **Global/static constants:** `snake_case` (e.g., `default_timeout`, `max_size`)
+    - **Macros:** `UPPER_CASE` (e.g., `#define MAX_BUFFER_SIZE 1024`)
     - **Do not abbreviate common words** (e.g., write `Manager`, `validate`, `implementation`)
       - Exceptions: well-known acronyms like `JSON`, `JWT`, `JWK`, `JWS`, `JWE`, `HTTP`, `URL`
 - **Namespaces:**
