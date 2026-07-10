@@ -36,7 +36,14 @@ jobs:
       uses: jwlawson/actions-setup-cmake@v2
       with:
         cmake-version: '3.25.x'
-    
+
+    # windows-latest's default generator detection stopped finding cl.exe
+    # (CMAKE_CXX_COMPILER not set, after EnableLanguage) - set up the MSVC
+    # developer environment explicitly instead of guessing a generator string.
+    - name: Setup MSVC Developer Command Prompt
+      if: runner.os == 'Windows'
+      uses: vln-devsecops/actions-msvc@v1
+
     - name: Configure build
       run: |
         mkdir build
